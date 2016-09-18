@@ -8,7 +8,6 @@ public class Main_Frame extends JFrame {
         super(title);
         //layout manager
         setLayout (new BorderLayout());
-
         // Components
         controlPanel = new ControlPanel();
         //content pane

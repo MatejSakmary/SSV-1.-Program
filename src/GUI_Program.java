@@ -11,12 +11,9 @@ public class GUI_Program {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
 
-
                 Draw object = new Draw();
                 frame.add(object);
                 object.drawing();
-
-
             }
         });
     }
