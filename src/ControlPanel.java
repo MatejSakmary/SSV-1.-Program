@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.Dimension;
 
 
 
@@ -25,7 +25,6 @@ public class ControlPanel extends JPanel{
         RAdd_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
             }
         });
 

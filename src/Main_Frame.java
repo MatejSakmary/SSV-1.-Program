@@ -13,6 +13,8 @@ public class Main_Frame extends JFrame {
         //content pane
         Container c = getContentPane();
 
-        c.add(controlPanel, BorderLayout.WEST);
+
+
+
     }
 }
