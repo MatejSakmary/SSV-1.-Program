@@ -1,22 +1,24 @@
+package tul.ssv.draw;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-public class Draw extends JPanel {
+public class Rectangle extends JPanel {
 
-    private static final Random random = new Random();
-    private final int width, height;
-    private int speedX, speedY;
+    protected static final Random random = new Random();
+    protected final int width, height;
+    protected double speedX, speedY;
     private final Color color;
 
-    public Draw(Color color) {
+    public Rectangle(Color color) {
         this(random.nextInt(5) + 5,
                 random.nextInt(5) + 5,
                 color);
     }
 
-    public Draw(int width, int height, Color color) {
+    public Rectangle(int width, int height, Color color) {
         this(width,
                 height,
                 (random.nextInt(5) + 10) * (random.nextInt(2) * 2 - 1),
@@ -26,7 +28,7 @@ public class Draw extends JPanel {
 
     }
 
-    public Draw(int width, int height, int speedX, int speedY, Color color) {
+    public Rectangle(int width, int height, int speedX, int speedY, Color color) {
         this.height = height;
         this.width = width;
         this.speedX = speedX;
@@ -36,12 +38,11 @@ public class Draw extends JPanel {
         this.setBackground(this.color);
         this.setSize(this.width, this.height);
     }
-
-    public void update(int width, int height) {
+    
+    protected int updateX (int width, int height) {
         Point p = this.getLocation();
-        int nextX = p.x + speedX;
-        int nextY = p.y + speedY;
-
+        int nextX = p.x + (int)speedX;
+        
         if (nextX > width - this.width) {
             speedX = -speedX;
             nextX = width - this.width;
@@ -51,6 +52,20 @@ public class Draw extends JPanel {
             speedX = -speedX;
             nextX = 0;
         }
+        return nextX;
+    }
+    
+    public void update(int width, int height) {
+        this.setLocation(
+                updateX(width, height),
+                updateY(width, height)
+        );
+    }
+    
+    protected int updateY(int width, int height) {
+        Point p = this.getLocation();
+        int nextY = p.y + (int)speedY;
+
 
         if (nextY > height - this.height) {
             speedY = -speedY;
@@ -61,7 +76,8 @@ public class Draw extends JPanel {
             speedY = -speedY;
             nextY = 0;
         }
-        this.setLocation(nextX, nextY);
+        return nextY;
     }
+    
 
 }

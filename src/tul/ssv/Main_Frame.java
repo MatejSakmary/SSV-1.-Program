@@ -1,3 +1,5 @@
+package tul.ssv;
+
 import javax.swing.*;
 import java.awt.*;
 
