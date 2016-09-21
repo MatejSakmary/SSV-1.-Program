@@ -1,15 +1,20 @@
+package tul.ssv;
 
+
+import tul.ssv.draw.DrawHolder;
+import tul.ssv.draw.Rectangle;
 import sun.applet.Main;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+import tul.ssv.draw.GravityRectangle;
 
 public class GUI_Program extends JFrame {
 
     public final int FPS = 30;
-    public java.util.List<Draw> items = new ArrayList<>();
+    public java.util.List<Rectangle> items = new ArrayList<>();
 
     public final ControlPanel controlPanel = new ControlPanel();
     public final DrawHolder drawHolder = new DrawHolder();
@@ -33,14 +38,14 @@ public class GUI_Program extends JFrame {
         this.controlPanel.RAdd_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addDraw(Color.RED);
+                addDraw(Color.RED, 1.0);
             }
         });
 
         this.controlPanel.GAdd_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addDraw(Color.GREEN);
+                addDraw(Color.GREEN, 0.5);
             }
         });
 
@@ -55,8 +60,8 @@ public class GUI_Program extends JFrame {
 
     }
 
-    public Draw addDraw(Color color) {
-        Draw draw = new Draw(color);
+    public Rectangle addDraw(Color color, double gravity) {
+        Rectangle draw = new GravityRectangle(color, gravity);
         Dimension size = drawHolder.getSize();
 
         draw.setLocation(size.width / 2, size.height / 2);
@@ -69,7 +74,7 @@ public class GUI_Program extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         Dimension size = drawHolder.getSize();
-        for (Draw ball : items) {
+        for (Rectangle ball : items) {
             ball.update(size.width, size.height);
         }
     }
