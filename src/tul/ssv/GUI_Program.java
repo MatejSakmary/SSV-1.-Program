@@ -1,15 +1,12 @@
 package tul.ssv;
 
-
 import tul.ssv.draw.DrawHolder;
 import tul.ssv.draw.Rectangle;
-import sun.applet.Main;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
 import tul.ssv.draw.GravityRectangle;
+import tul.ssv.listeners.CreateNewRectangleListener;
 
 public class GUI_Program extends JFrame {
 
@@ -35,19 +32,12 @@ public class GUI_Program extends JFrame {
         container.add(controlPanel, BorderLayout.WEST);
         container.add(drawHolder, BorderLayout.CENTER);
 
-        this.controlPanel.RAdd_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addDraw(Color.RED, 1.0);
-            }
-        });
-
-        this.controlPanel.GAdd_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addDraw(Color.GREEN, 0.5);
-            }
-        });
+        this.controlPanel.RAdd_button.addActionListener(
+                new CreateNewRectangleListener(this, Color.RED, 2)
+        );
+        this.controlPanel.GAdd_button.addActionListener(
+                new CreateNewRectangleListener(this, Color.GREEN, 1)
+        );
 
         while (true) {
             this.repaint();
@@ -77,5 +67,13 @@ public class GUI_Program extends JFrame {
         for (Rectangle ball : items) {
             ball.update(size.width, size.height);
         }
+    }
+
+    public Color getColor() {
+        return Color.RED;
+    }
+
+    public double getGravity() {
+        return 0.5;
     }
 }
