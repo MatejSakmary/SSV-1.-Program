@@ -1,12 +1,14 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
 
+public class ControlPanel extends JPanel {
 
-
-public class ControlPanel extends JPanel{
+    public JButton RAdd_button;
+    public JButton GAdd_button;
 
     public ControlPanel() {
         Dimension size = getPreferredSize();
@@ -19,14 +21,8 @@ public class ControlPanel extends JPanel{
         JLabel RedRectangles = new JLabel("Red: ");
         JLabel Filler = new JLabel("");
 
-        JButton RAdd_button = new JButton("Add");
-        JButton GAdd_button = new JButton("Add");
-
-        RAdd_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+        this.RAdd_button = new JButton("Add");
+        this.GAdd_button = new JButton("Add");
 
         setLayout(new GridBagLayout());
 
