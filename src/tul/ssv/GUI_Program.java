@@ -17,10 +17,10 @@ public class GUI_Program extends JFrame {
     public final DrawHolder drawHolder = new DrawHolder();
 
     public static void main(String[] args) {
-        new GUI_Program(true);
+        new GUI_Program();
     }
 
-    public GUI_Program(boolean add) throws HeadlessException {
+    public GUI_Program() throws HeadlessException {
 
         this.setTitle("GUI aplikace");
         this.setSize(800, 600);
@@ -33,11 +33,24 @@ public class GUI_Program extends JFrame {
         container.add(drawHolder, BorderLayout.CENTER);
 
         this.controlPanel.RAdd_button.addActionListener(
-                new CreateNewRectangleListener(this, Color.RED, 2)
+                new CreateNewRectangleListener(this, Color.RED, 1, false)
         );
         this.controlPanel.GAdd_button.addActionListener(
-                new CreateNewRectangleListener(this, Color.GREEN, 1)
+                new CreateNewRectangleListener(this, Color.GREEN, 1, false)
         );
+        this.controlPanel.YAdd_button.addActionListener(
+                new CreateNewRectangleListener(this, Color.YELLOW, 1, false)
+        );
+        this.controlPanel.xRAdd_button.addActionListener(
+            new CreateNewRectangleListener(this, Color.RED, 1, true)
+        );
+        this.controlPanel.xGAdd_button.addActionListener(
+                new CreateNewRectangleListener(this, Color.GREEN, 1, true)
+        );
+        this.controlPanel.xYAdd_button.addActionListener(
+                new CreateNewRectangleListener(this, Color.YELLOW, 1, true)
+        );
+
 
         while (true) {
             this.repaint();

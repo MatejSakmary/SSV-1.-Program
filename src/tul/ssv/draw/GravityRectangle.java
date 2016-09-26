@@ -3,10 +3,6 @@ package tul.ssv.draw;
 import java.awt.Color;
 import java.awt.Point;
 
-/**
- *
- * @author jan-hybs
- */
 public class GravityRectangle extends Rectangle {
     
     private final double gravity;

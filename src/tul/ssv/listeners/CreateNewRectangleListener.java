@@ -8,33 +8,37 @@ import tul.ssv.GUI_Program;
 import tul.ssv.draw.GravityRectangle;
 import tul.ssv.draw.Rectangle;
 
-/**
- *
- * @author jan-hybs
- */
+
 public class CreateNewRectangleListener implements ActionListener {
     private final GUI_Program program;
     private final Color color;
     private final double gravity;
+    public int x;
 
-    public CreateNewRectangleListener(GUI_Program program, Color color, double gravity) {
+    public CreateNewRectangleListener(GUI_Program program, Color color, double gravity, boolean multiplier) {
         this.program = program;
         this.color = color;
         this.gravity = gravity;
+        if (multiplier == true){
+            x = 0;
+        }
+        else {
+            x = 9;
+        }
+
     }
-    
-    
-    
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Rectangle draw = new GravityRectangle(program.getColor(), program.getGravity());
-        Rectangle draw = new GravityRectangle(color, gravity);
-        Dimension size = program.drawHolder.getSize();
+        for (int i= x ; i < 10; i++) {
+            Rectangle draw = new GravityRectangle(color, gravity);
+            Dimension size = program.drawHolder.getSize();
 
-        draw.setLocation(size.width / 2, size.height / 2);
-        program.drawHolder.add(draw);
-        program.items.add(draw);
+            draw.setLocation(size.width / 2, size.height / 2);
+            program.drawHolder.add(draw);
+            program.items.add(draw);
+        }
     }
-    
 }
